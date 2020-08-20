@@ -51,7 +51,7 @@ def respond_to_challenge(challenge_id, sms_code):
     return(helper.request_post(url, payload))
 
 
-def login(username=None, password=None, expiresIn=86400, scope='internal', by_sms=True, store_session=True, mfa_code=None):
+def login(username=None, password=None, expiresIn=300, scope='internal', by_sms=True, store_session=False, mfa_code=None):
     """This function will effectively log the user into robinhood by getting an
     authentication token and saving it to the session header. By default, it
     will store the authentication token in a pickle file and load that value
@@ -201,3 +201,5 @@ def logout():
     """
     helper.set_login_state(False)
     helper.update_session('Authorization', None)
+
+    print('Successfully Logged Out.')
